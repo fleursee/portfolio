@@ -20,11 +20,18 @@ model Project {
   id          String   @id @default(cuid())
   title       String
   slug        String   @unique
-  description String?
+  description String
+  image       String?  // URL to screenshot
   tags        String[] // e.g., ["React", "Next.js"]
-  // more fields later
+  category    String?  // "Frontend", "Fullstack"
+  githubUrl   String?
+  liveUrl     String?
+  content     String?  // MD for detail page
+  featured    Boolean  @default(false)
   createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
+
 
 // Object representing a coding skill
 model Skill {
@@ -35,9 +42,14 @@ model Skill {
 
 // Object representing a blog post (whenever I want to write a blog post)
 model BlogPost {
-  id      String @id @default(cuid())
-  slug    String @unique
-  title   String
-  content String // MDX later
-  published Boolean @default(false)
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  excerpt     String?
+  content     String   // MDX
+  tags        String[]
+  published   Boolean  @default(false)
+  publishedAt DateTime?
+  readingTime Int?
+  createdAt   DateTime @default(now())
 }
