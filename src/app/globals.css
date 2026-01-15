@@ -1,35 +1,154 @@
 @import "tailwindcss";
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-
 @theme {
-  /* Colors: Neutrals + Pastel accents */
+  /* Color Palette: Subtle Cute Aesthetic - Soft Pastels */
+  
+  /* Base Colors */
+  --color-background: #fefefe;
+  --color-foreground: #1a1a1a;
+  --color-card: #ffffff;
+  --color-card-foreground: #1a1a1a;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1a1a1a;
+  --color-primary: #a8e6cf;
+  --color-primary-foreground: #1a1a1a;
+  --color-secondary: #ffd3b6;
+  --color-secondary-foreground: #1a1a1a;
+  --color-muted: #f5f5f5;
+  --color-muted-foreground: #6b7280;
+  --color-accent: #ffaaa5;
+  --color-accent-foreground: #1a1a1a;
+  --color-destructive: #ff6b6b;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e5e7eb;
+  --color-input: #e5e7eb;
+  --color-ring: #a8e6cf;
+  
+  /* Pastel Accent Colors */
+  --color-blush-50: #fef2f2;
+  --color-blush-100: #fee2e2;
+  --color-blush-200: #fecaca;
+  --color-blush-300: #fca5a5;
+  --color-blush-400: #f8a5c2;
+  --color-blush-500: #f472b6;
+  --color-blush-600: #ec4899;
+  
+  --color-mint-50: #f0fdf4;
+  --color-mint-100: #dcfce7;
+  --color-mint-200: #bbf7d0;
+  --color-mint-300: #86efac;
+  --color-mint-400: #a7f3d0;
+  --color-mint-500: #10b981;
+  --color-mint-600: #059669;
+  
+  --color-lavender-50: #faf5ff;
+  --color-lavender-100: #f3e8ff;
+  --color-lavender-200: #e9d5ff;
+  --color-lavender-300: #d8b4fe;
+  --color-lavender-400: #c084fc;
+  --color-lavender-500: #a855f7;
+  
+  --color-peach-50: #fff7ed;
+  --color-peach-100: #ffedd5;
+  --color-peach-200: #fed7aa;
+  --color-peach-300: #fdba74;
+  --color-peach-400: #fb923c;
+  --color-peach-500: #f97316;
+  
+  --color-sky-50: #f0f9ff;
+  --color-sky-100: #e0f2fe;
+  --color-sky-200: #bae6fd;
+  --color-sky-300: #7dd3fc;
+  --color-sky-400: #38bdf8;
+  --color-sky-500: #0ea5e9;
+  
+  /* Neutrals */
   --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
   --color-slate-900: #0f172a;
-  --color-blush-400: #f8e8e8;  /* soft pink */
-  --color-blush-500: #f472b6;  /* rose accent */
-  --color-mint-400: #a7f3d0;   /* light mint */
-  --color-mint-500: #10b981;   /* emerald */
-  --color-gold-400: #fbbf24;   /* warm highlight */
+  
   /* Typography */
-  --font-family-sans: var(--font-inter), ui-sans-serif;
-  --font-family-display: var(--font-poppins), ui-sans-serif;
-  /* Border Radius */
+  --font-family-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-family-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-family-mono: var(--font-geist-mono), ui-monospace, monospace;
+  
+  /* Border Radius - Rounded Corners */
+  --radius-none: 0px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
   --radius-soft: 12px;
   --radius-extra: 24px;
-  /* Shadows */
+  --radius-full: 9999px;
+  
+  /* Shadows - Soft and Cute */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-cute: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-soft: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Dark Mode Colors - Improved for better readability */
+[data-theme="dark"] {
+  --color-background: #0f0f0f;
+  --color-foreground: #f5f5f5;
+  --color-card: #1a1a1a;
+  --color-card-foreground: #f5f5f5;
+  --color-popover: #1a1a1a;
+  --color-popover-foreground: #f5f5f5;
+  --color-primary: #34d399;
+  --color-primary-foreground: #0f0f0f;
+  --color-secondary: #fb923c;
+  --color-secondary-foreground: #0f0f0f;
+  --color-muted: #1f1f1f;
+  --color-muted-foreground: #a3a3a3;
+  --color-accent: #f472b6;
+  --color-accent-foreground: #0f0f0f;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #2a2a2a;
+  --color-input: #2a2a2a;
+  --color-ring: #34d399;
+  
+  /* Dark mode pastel colors - more muted for better contrast */
+  --color-blush-400: #7c2d48;
+  --color-blush-500: #9f1239;
+  --color-blush-600: #881337;
+  
+  --color-mint-400: #065f46;
+  --color-mint-500: #047857;
+  --color-mint-600: #059669;
+  
+  --color-lavender-300: #6b21a8;
+  --color-lavender-400: #7c3aed;
+  --color-lavender-500: #8b5cf6;
+  
+  --color-peach-300: #c2410c;
+  --color-peach-400: #ea580c;
+  --color-peach-500: #f97316;
+  
+  --color-sky-300: #0369a1;
+  --color-sky-400: #0284c7;
+  --color-sky-500: #0ea5e9;
+}
+
+* {
+  border-color: var(--color-border);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-family-sans);
+  font-feature-settings: "rlig" 1, "calt" 1;
 }
