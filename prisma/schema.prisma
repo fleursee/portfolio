@@ -52,4 +52,5 @@ model BlogPost {
   publishedAt DateTime?
   readingTime Int?
   createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
