@@ -14,19 +14,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// export default function RootLayout({ children }: { children: React.ReactNode }) {
-//   return (
-//     <html lang="en">
-//       <head>
-//         <link rel="preconnect" href="https://fonts.googleapis.com" />
-//         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-//         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-//       </head>
-//       <body>{children}</body>
-//     </html>
-//   )
-// }
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -72,6 +59,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
-
-  // Add suppress for theme in ~ln 32
-  // Themeprovider at ~ln 34 wraps children

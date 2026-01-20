@@ -30,7 +30,7 @@ export default function Contact() {
           <CheckCircle2 className="w-16 h-16 text-mint-500 mb-6 animate-bounce" />
           <h1 className="text-3xl font-bold mb-4">Message Sent!</h1>
           <p className="text-slate-600 dark:text-slate-400 mb-8">
-            Thank you for reaching out. I'll get back to you as soon as possible.
+            Thank you for reaching out. I&apos;ll get back to you as soon as possible.
           </p>
           <Button onClick={() => setIsSent(false)} variant="outline">Send another</Button>
         </div>
