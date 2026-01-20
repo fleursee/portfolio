@@ -70,4 +70,11 @@
   html {
     scroll-behavior: smooth;
   }
+  /* Text highlight */
+  @layer base {
+    ::selection {
+      background-color: var(--color-mint-200);
+      color: var(--color-mint-900);
+    }
+  }
 }
