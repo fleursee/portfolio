@@ -2,7 +2,9 @@
 import { revalidatePath } from 'next/cache'
 import prisma from '@/lib/prisma'
 import { redirect } from 'next/navigation'
+import { Resend } from 'resend'
 
+const resend = new Resend(process.env.RESEND_API_KEY!)
 import { Prisma } from '@/generated/prisma/client' // specifically for typing
 
 export async function deleteItem(model: 'project' | 'blogPost' | 'skill', id: string) {
@@ -52,4 +54,33 @@ export async function upsertProject(id: string | undefined, data: Prisma.Project
     }
     revalidatePath('/admin/skills')
     redirect('/admin/skills')
+  }
+
+  export async function sendContactEmail(formData: FormData) {
+    const name = formData.get('name') as string
+    const email = formData.get('email') as string
+    const message = formData.get('message') as string
+  
+    try {
+      await resend.emails.send({
+        from: 'Portfolio <noreply@yourdomain.com>', // Update this after domain verification
+        to: 'your@email.com', // Your personal email
+        subject: `✨ New message from ${name}`,
+        html: `
+          <div style="font-family: sans-serif; padding: 20px; border: 1px solid #e5e7eb; border-radius: 12px;">
+            <h2 style="color: #10b981;">New Contact Form Submission</h2>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <div style="margin-top: 20px; padding: 15px; background: #f9fafb; border-radius: 8px;">
+              <p><strong>Message:</strong></p>
+              <p>${message}</p>
+            </div>
+          </div>
+        `,
+      })
+      return { success: true }
+    } catch (error) {
+      console.error('Contact Action Error:', error)
+      return { error: 'Failed to send message.' }
+    }
   }
