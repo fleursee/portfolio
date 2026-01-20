@@ -1,5 +1,3 @@
-import { Header } from '@/components/layout/header'
-import { Footer } from '@/components/layout/footer'
 import prisma from '@/lib/prisma'
 import Hero from '@/components/hero'
 import About from '@/components/about'
@@ -12,10 +10,8 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen flex flex-col">
-      <Header />
       <Hero />
       <About skills={skills} />
-      <Footer />
     </main>
   )
 }
