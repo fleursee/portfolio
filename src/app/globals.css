@@ -71,10 +71,17 @@
     scroll-behavior: smooth;
   }
   /* Text highlight */
-  @layer base {
-    ::selection {
-      background-color: var(--color-mint-200);
-      color: var(--color-mint-900);
-    }
+  /* Cutesy Text Highlight */
+  ::selection {
+    /* Using your Blush pastel for a soft pink highlight */
+    background-color: var(--color-blush-500); 
+    color: white;
+  }
+
+  /* Optional: Different highlight for dark mode */
+  [data-theme="dark"] ::selection {
+    /* Using your Mint pastel for a soft green glow in dark mode */
+    background-color: var(--color-mint-500);
+    color: #1a1a1a;
   }
 }
