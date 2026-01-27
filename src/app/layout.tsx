@@ -2,6 +2,7 @@ import { Inter, Poppins } from 'next/font/google';  // Add imports
 import { Geist, Geist_Mono } from 'next/font/google';  // Existing
 import './globals.css';
 import { ThemeProvider } from '@/components/providers'  // ← Import here
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const poppins = Poppins({ weight: ['400', '500', '600', '700'], subsets: ['latin'], variable: '--font-poppins' });
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           {children}
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   )
