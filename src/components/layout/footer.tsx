@@ -15,7 +15,7 @@ export function Footer() {
               © {new Date().getFullYear()} Fleur. All rights reserved.
             </p>
             <p className="text-xs text-muted-foreground">
-              Built with Next.js, Tailwind CSS, and lots of ☕ and ❤️
+              Built with Next.js, Tailwind CSS, and lots of ☕ and ❤️. Favicon created by Flaticon.
             </p>
           </div>
           <div className="flex items-center gap-4">
