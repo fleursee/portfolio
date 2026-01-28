@@ -7,7 +7,17 @@ import Link from 'next/link'
 import { deleteItem } from '@/lib/actions'
 import BlogForm from './BlogForm'
 
+import { getServerSession } from 'next-auth/next'
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { redirect } from 'next/navigation'
+
 export default async function BlogAdmin({ searchParams }: { searchParams: Promise<{ editId?: string }> }) {
+
+  const session = await getServerSession(authOptions)
+  if (!session || !session.user || session.user.role !== 'ADMIN') {
+    redirect('/admin/login')
+  }
+
   const { editId } = await searchParams
   const editPost = editId ? await prisma.blogPost.findUnique({ where: { id: editId } }) : null
   const posts = await prisma.blogPost.findMany({ orderBy: { createdAt: 'desc' } })

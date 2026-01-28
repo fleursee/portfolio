@@ -7,7 +7,17 @@ import Link from 'next/link'
 import { deleteItem } from '@/lib/actions'
 import ProjectForm from './ProjectForm'
 
+import { getServerSession } from 'next-auth/next'
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { redirect } from 'next/navigation'
+
 export default async function ProjectsAdmin({ searchParams }: { searchParams: { editId?: string } }) {
+
+  const session = await getServerSession(authOptions)
+  if (!session || !session.user || session.user.role !== 'ADMIN') {
+    redirect('/admin/login')
+  }
+
   const { editId } = await searchParams
   const editProject = editId ? await prisma.project.findUnique({ where: { id: editId } }) : null
   const projects = await prisma.project.findMany({ orderBy: { createdAt: 'desc' } })
