@@ -4,7 +4,7 @@ Welcome to my personal portfolio! This project showcases a modern full-stack app
 
 🔗 **Repository:** [github.com/fleursee/portfolio](https://github.com/fleursee/portfolio)
   
-- ⚠️ The /about page has not been properly redirected yet in the live page, and the contact form doesn't go anywhere yet.
+- ⚠️ The /about page has not been properly redirected yet in the live page.
 
 ## 🛠 Tech Stack & Tools
 
@@ -56,6 +56,8 @@ NEXTAUTH_SECRET=""
 
 # Email Service
 RESEND_API_KEY=""
+RESEND_FROM_EMAIL=""
+RESEND_TO_EMAIL=""
 ```
 
 ### 4. Database Setup

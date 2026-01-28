@@ -7,6 +7,13 @@ import { Resend } from 'resend'
 const resend = new Resend(process.env.RESEND_API_KEY!)
 import { Prisma } from '@/generated/prisma/client' // specifically for typing
 
+/* These two emails are needed for Resend. From shows where the service will be originated from, and to is where the email will show up.*/
+const from_email = process.env.RESEND_FROM_EMAIL!; 
+const to_email = process.env.RESEND_TO_EMAIL!;
+/* In this project, from could be a portfoliu@xxx.yyy, and to can be you@domain.com
+This is an API key because pure email should never be exposed.
+*/
+
 export async function deleteItem(model: 'project' | 'blogPost' | 'skill', id: string) {
 
     const where = { id };
@@ -63,8 +70,8 @@ export async function upsertProject(id: string | undefined, data: Prisma.Project
   
     try {
       await resend.emails.send({
-        from: 'Portfolio <noreply@yourdomain.com>', // Update this after domain verification
-        to: 'your@email.com', // Your personal email
+        from: from_email,
+        to: to_email,
         subject: `✨ New message from ${name}`,
         html: `
           <div style="font-family: sans-serif; padding: 20px; border: 1px solid #e5e7eb; border-radius: 12px;">
