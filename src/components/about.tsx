@@ -64,8 +64,9 @@ export default function About({ skills }: { skills: Skill[] }) {
           About Me
         </h2>
         <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 leading-relaxed">
-          Software developer passionate about creating delightful UIs with cutting-edge stacks. 
-          Blending uni projects, indie hacks, and professional polish into portfolios that wow.
+        As a Computer Engineer, I design digital products with a 'logic-first' approach. My specialty lies in crafting high-performance backends. 
+        Yet, I also believe that high-quality code and beautiful design do not have to be mutually exclusive. 
+        I apply engineering principles to the frontend as well, crafting user interfaces that are both structurally beautiful and visually beautiful.
         </p>
       </div>
 

@@ -40,8 +40,12 @@ export default function Hero() {
         <h1 className="hero-title font-display text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-mint-500 via-blush-500 to-peach-400 bg-clip-text text-transparent drop-shadow-2xl">
           Hi, I&apos;m Fleur ✨
         </h1>
+        {/* Adding a professional title sub-header */}
+        <span className="block text-sm font-mono text-primary mb-4 tracking-widest uppercase">
+          Computer Engineer | Full-Stack Developer
+        </span>
         <p className="text-xl md:text-2xl lg:text-3xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-          Crafting subtly cute, professional web experiences with modern full-stack tech.
+        Closing the gap between high-quality computer engineering and beautiful digital experiences. I design high-performance backends and wrap them with subtly cute and beautiful user interfaces.
         </p>
       </div>
 
