@@ -7,7 +7,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <aside className="w-64 border-r bg-white dark:bg-slate-900 p-6 flex flex-col gap-8">
         <div className="flex items-center gap-2 px-2">
           <LayoutDashboard className="w-6 h-6 text-mint-500" />
-          <h2 className="text-xl font-bold">Admin</h2>
+          <h2 className="text-xl font-bold"><a href="/admin">Admin</a></h2>
         </div>
         
         <nav className="flex flex-col gap-2">

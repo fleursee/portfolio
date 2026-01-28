@@ -4,7 +4,17 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 
+import { getServerSession } from 'next-auth/next'
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { redirect } from 'next/navigation'
+
 export default async function SkillsAdmin() {
+
+  const session = await getServerSession(authOptions)
+  if (!session || !session.user || session.user.role !== 'ADMIN') {
+    redirect('/admin/login')
+  }
+
   const skills = await prisma.skill.findMany()
 
   return (
