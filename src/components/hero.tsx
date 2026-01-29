@@ -56,7 +56,7 @@ export default function Hero() {
             <Link href="/projects">Explore Projects</Link>
           </Button>
           <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6 rounded-xl border-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all">
-            <Link href="/about">Learn About Me</Link>
+            <Link href="/contact">Get in Touch 👋</Link>
           </Button>
         </div>
       </div>
