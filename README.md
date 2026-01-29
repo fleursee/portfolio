@@ -4,7 +4,7 @@ Welcome to my personal portfolio! This project showcases a modern full-stack app
 
 🔗 **Repository:** [github.com/fleursee/portfolio](https://github.com/fleursee/portfolio)
   
-- ⚠️ The /about page has not been properly redirected yet in the live page.
+- ⚠️ Even though there is blog functionalities, this is unused (for now) in production.
 
 ## 🛠 Tech Stack & Tools
 
