@@ -1,11 +1,12 @@
 'use client'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { upsertProject } from '@/lib/actions'
 import { Project } from '@/generated/prisma/client'
+import { Editor } from '@/components/admin/editor'
 
 const schema = z.object({
     title: z.string().min(1, "Title is required"),
@@ -107,11 +108,19 @@ export default function ProjectForm({
 
             <div className="col-span-2 space-y-2">
                 <label className="text-sm font-medium">Description</label>
-                <textarea 
-                    {...form.register('description')} 
-                    className="w-full min-h-[100px] border border-input bg-background px-3 py-2 text-sm rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" 
-                    placeholder="Short summary of the project..." 
+                <Controller
+                    control={form.control}
+                    name="description"
+                    render={({ field }) => (
+                        <Editor 
+                            content={field.value} 
+                            onChange={field.onChange} 
+                        />
+                    )}
                 />
+                {form.formState.errors.description && (
+                    <p className="text-xs text-destructive">{form.formState.errors.description.message}</p>
+                )}
             </div>
 
             <label className="flex items-center gap-2 col-span-2 cursor-pointer">
