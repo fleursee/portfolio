@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { ArrowLeft, ExternalLink, Github, Calendar } from 'lucide-react'
 import prisma from '@/lib/prisma'
 import { Badge } from '@/components/ui/badge'
-// import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 interface ProjectDetailPageProps {
@@ -129,18 +128,68 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         </div>
       )}
 
-      {/* Project Content */}
+      {/* Project Content - Rendered from Tiptap HTML */}
       {project.content && (
-        <div className="prose prose-slate dark:prose-invert max-w-none mb-12">
+        <div className="mb-12">
           <div
             className={cn(
+              // Base prose styles for Tiptap content
+              "prose prose-lg prose-slate dark:prose-invert max-w-none",
+              
+              // Headings
               "prose-headings:font-display prose-headings:text-slate-900 dark:prose-headings:text-slate-100",
+              "prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl",
+              "prose-h1:mb-4 prose-h2:mb-3 prose-h3:mb-2",
+              
+              // Paragraphs and text
               "prose-p:text-slate-700 dark:prose-p:text-slate-300",
-              "prose-a:text-mint-500 dark:prose-a:text-mint-400 prose-a:no-underline hover:prose-a:underline",
+              "prose-p:leading-relaxed",
+              
+              // Links
+              "prose-a:text-mint-500 dark:prose-a:text-mint-400",
+              "prose-a:no-underline hover:prose-a:underline",
+              "prose-a:transition-colors",
+              
+              // Lists
+              "prose-ul:text-slate-700 dark:prose-ul:text-slate-300",
+              "prose-ol:text-slate-700 dark:prose-ol:text-slate-300",
+              "prose-li:marker:text-mint-500 dark:prose-li:marker:text-mint-400",
+              
+              // Strong and emphasis
               "prose-strong:text-slate-900 dark:prose-strong:text-slate-100",
+              "prose-strong:font-semibold",
+              "prose-em:text-slate-700 dark:prose-em:text-slate-300",
+              
+              // Code
               "prose-code:text-blush-500 dark:prose-code:text-blush-400",
+              "prose-code:bg-slate-100 dark:prose-code:bg-slate-800",
+              "prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded",
+              "prose-code:before:content-none prose-code:after:content-none",
+              
+              // Code blocks
               "prose-pre:bg-slate-900 dark:prose-pre:bg-slate-800",
-              "prose-img:rounded-extra prose-img:shadow-cute"
+              "prose-pre:text-slate-100",
+              "prose-pre:border prose-pre:border-slate-700",
+              "prose-pre:rounded-lg prose-pre:shadow-lg",
+              
+              // Blockquotes
+              "prose-blockquote:border-l-mint-500 dark:prose-blockquote:border-l-mint-400",
+              "prose-blockquote:text-slate-700 dark:prose-blockquote:text-slate-300",
+              "prose-blockquote:bg-slate-50 dark:prose-blockquote:bg-slate-900/50",
+              "prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r",
+              
+              // Images
+              "prose-img:rounded-extra prose-img:shadow-cute",
+              "prose-img:border prose-img:border-slate-200 dark:prose-img:border-slate-700",
+              
+              // HR
+              "prose-hr:border-slate-200 dark:prose-hr:border-slate-700",
+              
+              // Tables
+              "prose-table:border prose-table:border-slate-200 dark:prose-table:border-slate-700",
+              "prose-th:bg-slate-100 dark:prose-th:bg-slate-800",
+              "prose-th:text-slate-900 dark:prose-th:text-slate-100",
+              "prose-td:text-slate-700 dark:prose-td:text-slate-300"
             )}
             dangerouslySetInnerHTML={{ __html: project.content }}
           />
@@ -165,7 +214,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
   )
 }
 
-// Generate static params for better performance (optional)
+// Generate static params for better performance
 export async function generateStaticParams() {
   const projects = await prisma.project.findMany({
     select: { slug: true },
