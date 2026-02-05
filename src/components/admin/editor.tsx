@@ -1,6 +1,6 @@
 "use client";
 
-import { useEditor, EditorContent, InputRule } from '@tiptap/react'; // Import InputRule
+import { useEditor, EditorContent, InputRule } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { Markdown } from 'tiptap-markdown';
 import Link from '@tiptap/extension-link';
@@ -8,9 +8,15 @@ import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { 
-  Bold, Italic, List, ListOrdered, Code, Heading2, 
+  Bold, Italic, List, ListOrdered, Heading2, 
   Quote, SquareCode, Eye, Edit3
 } from 'lucide-react';
+
+interface EditorStorage {
+  markdown?: {
+    getMarkdown: () => string;
+  };
+}
 
 export function Editor({ content, onChange }: { content: string, onChange: (v: string) => void }) {
     const [mounted, setMounted] = useState(false);
@@ -30,8 +36,6 @@ export function Editor({ content, onChange }: { content: string, onChange: (v: s
                 tightLists: true 
             }),
 
-            // I tried making this work with the link extension, but it didn't work.
-            
             Link.extend({
                 addInputRules() {
                     return [
@@ -72,12 +76,16 @@ export function Editor({ content, onChange }: { content: string, onChange: (v: s
             },
         },
         onUpdate: ({ editor }) => {
-            const markdown = (editor.storage as any).markdown?.getMarkdown();
+            const storage = editor.storage as EditorStorage;
+            const markdown = storage.markdown?.getMarkdown();
             if (markdown !== undefined) onChange(markdown);
         },
     });
 
     if (!mounted || !editor) return <div className="min-h-[300px] w-full bg-muted animate-pulse rounded-md border" />;
+
+    const storage = editor.storage as EditorStorage;
+    const currentMarkdown = storage.markdown?.getMarkdown() || '';
 
     return (
         <div className="flex flex-col w-full border rounded-md border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm bg-card">
@@ -113,7 +121,7 @@ export function Editor({ content, onChange }: { content: string, onChange: (v: s
                 {isPreview ? (
                     <div className="prose prose-sm dark:prose-invert max-w-none p-4 min-h-[250px] bg-slate-50/50 dark:bg-slate-900/30 overflow-auto">
                         <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                            {(editor.storage as any).markdown?.getMarkdown()}
+                            {currentMarkdown}
                         </ReactMarkdown>
                     </div>
                 ) : (
