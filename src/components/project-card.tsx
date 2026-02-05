@@ -19,7 +19,7 @@ export default function ProjectCard({ project, view = 'grid' }: ProjectCardProps
 
   if (view === 'list') {
     return (
-      <Card ref={ref} className="group hover:shadow-cute transition-all duration-500 overflow-hidden project-card">
+      <Card ref={ref} className="group hover:shadow-cute transition-all duration-500 overflow-hidden project-card border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
         <div className="flex flex-col md:flex-row">
           <Link href={`/projects/${project.slug}`} className="block md:w-64 flex-shrink-0">
             <CardHeader className="p-0 h-48 md:h-full relative cursor-pointer">
@@ -47,14 +47,16 @@ export default function ProjectCard({ project, view = 'grid' }: ProjectCardProps
                 )}
               </div>
               <Link href={`/projects/${project.slug}`}>
-                <CardTitle className="font-display text-2xl mb-2 hover:text-mint-500 dark:hover:text-mint-400 transition-colors cursor-pointer">
+                <CardTitle className="font-display text-2xl mb-2 text-slate-900 dark:text-slate-100 hover:text-mint-500 dark:hover:text-mint-400 transition-colors cursor-pointer">
                   {project.title}
                 </CardTitle>
               </Link>
               <p className="text-slate-600 dark:text-slate-400 mb-4">{project.description}</p>
               <div className="flex flex-wrap gap-1 mb-4">
                 {project.tags.map(tag => (
-                  <Badge key={tag} variant="secondary">{tag}</Badge>
+                  <Badge key={tag} variant="secondary" className="dark:bg-slate-800 dark:text-slate-300">
+                    {tag}
+                  </Badge>
                 ))}
               </div>
             </div>
@@ -107,7 +109,7 @@ export default function ProjectCard({ project, view = 'grid' }: ProjectCardProps
   }
 
   return (
-    <Card ref={ref} className="group hover:shadow-cute hover:-translate-y-4 transition-all duration-500 overflow-hidden h-full project-card">
+    <Card ref={ref} className="group hover:shadow-cute hover:-translate-y-4 transition-all duration-500 overflow-hidden h-full project-card border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
       <Link href={`/projects/${project.slug}`} className="block">
         <CardHeader className="p-0 h-48 relative cursor-pointer">
           <Image 
@@ -133,14 +135,16 @@ export default function ProjectCard({ project, view = 'grid' }: ProjectCardProps
           )}
         </div>
         <Link href={`/projects/${project.slug}`}>
-          <CardTitle className="font-display text-xl mb-2 hover:text-mint-500 dark:hover:text-mint-400 transition-colors cursor-pointer">
+          <CardTitle className="font-display text-xl mb-2 text-slate-900 dark:text-slate-100 hover:text-mint-500 dark:hover:text-mint-400 transition-colors cursor-pointer">
             {project.title}
           </CardTitle>
         </Link>
         <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">{project.description}</p>
         <div className="flex flex-wrap gap-1 mb-4">
           {project.tags.slice(0, 3).map(tag => (
-            <Badge key={tag} variant="secondary">{tag}</Badge>
+            <Badge key={tag} variant="secondary" className="dark:bg-slate-800 dark:text-slate-300">
+              {tag}
+            </Badge>
           ))}
         </div>
         <div className="flex gap-2 items-center flex-wrap">
